@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   myapi:
-    image: ravik9410/newAPP
+    image: ravik9410/newapp
     container_name: myapi
     depends_on:
       - sqlserver
