@@ -25,7 +25,7 @@ builder.Services.AddHsts(options =>
 builder.Services.AddHttpsRedirection(options =>
 {
     options.RedirectStatusCode = Status307TemporaryRedirect;
-    options.HttpsPort = 5001;
+    options.HttpsPort = 7016;
 });
 if (!builder.Environment.IsDevelopment())
 {
