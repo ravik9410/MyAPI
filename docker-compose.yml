@@ -7,8 +7,8 @@ services:
     depends_on:
       - sqlserver
     ports:
-      - "7015:80"
-      - "5035:443"
+      - "5035:80"
+      - "7015:443"
     build:
       context: .
       dockerfile: MyAPI/Dockerfile
