@@ -7,6 +7,10 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+var dbHost = Environment.GetEnvironmentVariable("demoappdb");
+var dbName = Environment.GetEnvironmentVariable("UserManagement_ServicesDb");
+var dbPassword = Environment.GetEnvironmentVariable("password@12345#");
+var connectionString = $"Data Source={dbHost};Initial Catalog={dbName}; Persist Security Info=True; User ID=sa; Password={dbPassword};";
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));

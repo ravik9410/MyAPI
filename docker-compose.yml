@@ -1,4 +1,7 @@
 version: '3.4'
+networks:
+  demoappnetwork:
+
 
 services:
   myapi:
@@ -7,18 +10,16 @@ services:
     depends_on:
       - sqlserver
     ports:
-      - "5035:80"
-      - "7016:443"
+      - "7016:80"      
     build:
       context: .
       dockerfile: MyAPI/Dockerfile
-    environment:        
-        REGISTRY_HTTP_TLS_CERTIFICATE: /certs/domain.crt
-        REGISTRY_HTTP_TLS_KEY: /certs/domain.key
-         - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=UserManagement_ServicesDbtest;User Id=sa;Password=YourStrongPassword123!;
-    volumes:
-          - /etc/docker/certs.d/myregistrydomain.com:/certs
-          - registry-data:/var/lib/registry
+    environment:
+      - DB_HOST=demoappdb
+      - DB_NAME=UserManagement_ServicesDb
+      - DB_SA_PASSWORD=password@12345#
+    networks:
+      - demoappnetwork   
     restart: always
 
 
@@ -26,15 +27,15 @@ services:
     image: mcr.microsoft.com/mssql/server:2019-latest
     container_name: sqlserver
     environment:
-      - SA_PASSWORD=YourStrongPassword123!
+      - SA_PASSWORD=password@12345#!
       - ACCEPT_EULA=Y      
     ports:
       - "1433:1433"
     volumes:
       - sqlserverdata:/var/opt/mssql
       - ./init-db:/docker-entrypoint-initdb.d
-
-volumes:
-  registry-data:
+    networks:
+      - demoappnetwork
+volumes:  
   sqlserverdata:
 
