@@ -43,14 +43,22 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-
+/*
 app.UseSwagger();
-app.UseSwaggerUI();
-if (!app.Environment.IsDevelopment())
+app.UseSwaggerUI();*/
+/*if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
     app.UseHsts();
-}
+}*/
+app.UseSwagger();
+//app.UseSwaggerUI();
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "LandscapesUnlimited_TRPT_API");
+    // c.InjectStylesheet("/swagger/custom.css");
+    c.RoutePrefix = String.Empty;
+});
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
