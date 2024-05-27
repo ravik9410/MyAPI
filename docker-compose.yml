@@ -1,4 +1,6 @@
 version: '3.4'
+
+
 networks:
   demoappnetwork:
 
@@ -20,7 +22,7 @@ services:
       - DB_SA_PASSWORD=password@12345#!
     networks:
       - demoappnetwork   
-    restart: always
+    #restart: always
 
 
   sqlserver:    

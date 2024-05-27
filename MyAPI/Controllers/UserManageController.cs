@@ -107,7 +107,7 @@ namespace MyAPI.Controllers
                     Message = string.Empty
                 };
             }
-             _userServices.ApplicationUsers.Update(users);
+            _userServices.ApplicationUsers.Update(users);
             var user = await _userServices.SaveChangesAsync();
             if (user == 1)
             {
@@ -124,6 +124,31 @@ namespace MyAPI.Controllers
                 {
                     Result = "No user found with id = " + userId,
                     Message = "No user found with id = " + userId,
+                    IsSuccess = false
+                };
+            }
+        }
+        [HttpPost()]
+        public async Task<ResponseDto> Post(ApplicationUser users)
+        {
+
+            _userServices.ApplicationUsers.Add(users);
+            var user = await _userServices.SaveChangesAsync();
+            if (user == 1)
+            {
+                return new()
+                {
+                    Result = user,
+                    IsSuccess = true,
+                    Message = string.Empty
+                };
+            }
+            else
+            {
+                return new()
+                {
+                    Result = "Not saved ,",
+                    Message = "Not saved",
                     IsSuccess = false
                 };
             }
