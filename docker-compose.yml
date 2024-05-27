@@ -17,7 +17,7 @@ services:
       context: .
       dockerfile: MyAPI/Dockerfile
     environment:
-      - DB_HOST=demoappdb
+      - DB_HOST=sqlserver
       - DB_NAME=UserManagement_ServicesDb
       - DB_SA_PASSWORD=password@12345#!
     networks:
@@ -35,5 +35,5 @@ services:
       - "1433:1433"    
     networks:
       - demoappnetwork
-
-
+      
+ 
