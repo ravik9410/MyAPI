@@ -23,9 +23,9 @@ services:
     restart: always
 
 
-  sqlserver:
+  sqlserver:    
+    container_name: sqlservers
     image: mcr.microsoft.com/mssql/server:2019-latest
-    container_name: sqlserver
     environment:
       - SA_PASSWORD=password@12345#!
       - ACCEPT_EULA=Y      
