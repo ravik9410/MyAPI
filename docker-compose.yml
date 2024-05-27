@@ -17,7 +17,7 @@ services:
     environment:
       - DB_HOST=demoappdb
       - DB_NAME=UserManagement_ServicesDb
-      - DB_SA_PASSWORD=password@12345#
+      - DB_SA_PASSWORD=password@12345#!
     networks:
       - demoappnetwork   
     restart: always
@@ -30,12 +30,8 @@ services:
       - SA_PASSWORD=password@12345#!
       - ACCEPT_EULA=Y      
     ports:
-      - "1433:1433"
-    volumes:
-      - sqlserverdata:/var/opt/mssql
-      - ./init-db:/docker-entrypoint-initdb.d
+      - "1433:1433"    
     networks:
       - demoappnetwork
-volumes:  
-  sqlserverdata:
+
 
