@@ -18,27 +18,27 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddHsts(options =>
-{
-    options.Preload = true;
-    options.IncludeSubDomains = true;
-    options.MaxAge = TimeSpan.FromDays(60);
-    options.ExcludedHosts.Add("example.com");
-    options.ExcludedHosts.Add("www.example.com");
-});
-builder.Services.AddHttpsRedirection(options =>
-{
-    options.RedirectStatusCode = Status307TemporaryRedirect;
-    options.HttpsPort = 7016;
-});
-if (!builder.Environment.IsDevelopment())
-{
-    builder.Services.AddHttpsRedirection(options =>
-    {
-        options.RedirectStatusCode = Status308PermanentRedirect;
-        options.HttpsPort = 443;
-    });
-}
+/*//builder.Services.AddHsts(options =>
+//{
+//    options.Preload = true;
+//    options.IncludeSubDomains = true;
+//    options.MaxAge = TimeSpan.FromDays(60);
+//    options.ExcludedHosts.Add("example.com");
+//    options.ExcludedHosts.Add("www.example.com");
+//});
+//builder.Services.AddHttpsRedirection(options =>
+//{
+//    options.RedirectStatusCode = Status307TemporaryRedirect;
+//    options.HttpsPort = 7016;
+//});
+//if (!builder.Environment.IsDevelopment())
+//{
+//    builder.Services.AddHttpsRedirection(options =>
+//    {
+//        options.RedirectStatusCode = Status308PermanentRedirect;
+//        options.HttpsPort = 443;
+//    });
+//}*/
 
 var app = builder.Build();
 
