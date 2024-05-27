@@ -10,7 +10,7 @@ builder.Services.AddControllers();
 var dbHost = Environment.GetEnvironmentVariable("DB_HOST");
 var dbName = Environment.GetEnvironmentVariable("DB_NAME");
 var dbPassword = Environment.GetEnvironmentVariable("DB_SA_PASSWORD");
-var connectionString = $"Data Source={dbHost};Initial Catalog={dbName}; Persist Security Info=True; User ID=sa; Password={dbPassword};";
+var connectionString = $"Data Source={dbHost};Initial Catalog={dbName};User ID=sa;Password={dbPassword}";
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(connectionString);
@@ -65,9 +65,9 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapControllers();
-ApplyMigration();
+//ApplyMigration();
 app.Run();
-void ApplyMigration()
+/*void ApplyMigration()
 {
 
     using (var scope = app.Services.CreateScope())
@@ -78,4 +78,4 @@ void ApplyMigration()
             _db.Database.Migrate();
         }
     }
-}
+}*/
